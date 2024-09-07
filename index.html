@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button onclick="makeRequest()">Cria Tabela</button>
+
+    <script>
+        async function makeRequest() {
+            try {
+                // Fetch data from API
+                const response = await fetch('https://dados.al.gov.br/catalogo/api/3/action/datastore_search?resource_id=547b07f2-478f-473d-b9db-af432c943036&limit=5');
+                
+                if (!response.ok) {
+                    // Log the status code
+                    console.log('Status code:', response.status);
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+
+                // Convert response to JSON
+                const data = await response.json();
+
+                // Create table with data
+                criaTabela(data);
+            } catch (error) {
+                console.error('Houve um problema com a requisição Fetch:', error);
+            }
+        }
+
+        function criaTabela(responseJson) {
+            // Criando a tabela e os elementos associados
+            let table = document.createElement('table');
+            let headerRow = document.createElement('tr');
+            let headers = [ "_id", "nome", "geometriaa", "operaciona", "situacaofi", "matconstr", "turistica", "cultura", "administra", "classeativ", "divisaoati", "grupoative", "proprioadm", "Latitude", "Longitude", "NM_MUN" ];
+
+            // Adicionando cabeçalhos à tabela
+            headers.forEach(headerText => {
+                let header = document.createElement('th');
+                header.textContent = headerText;
+                headerRow.appendChild(header);
+            });
+
+            table.appendChild(headerRow);
+
+            // Adicionando os dados à tabela
+            responseJson.result.records.forEach(record => {
+                let row = document.createElement('tr');
+                headers.forEach(headerText => {
+                    let cell = document.createElement('td');
+                    cell.textContent = record[headerText] || ''; 
+                    row.appendChild(cell);
+                });
+                table.appendChild(row);
+            });
+
+            document.body.appendChild(table);
+        }
+    </script>
+</body>
+</html>

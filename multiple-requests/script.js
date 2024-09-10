@@ -8,9 +8,21 @@ async function requestFetch(requestUrl){
     return data
 }
 
+function removeTableIfExists(tableId) {
+    let existingTable = document.getElementById(tableId);
+    if (existingTable) {
+        existingTable.remove();
+    }
+}
+
 async function createTableEscolas(records){
-    let div = document.querySelector('#section1')
+    let div = document.querySelector('#section1');
+
+    removeTableIfExists('table-escolas');
+
     let table = document.createElement('table');
+    table.id = 'table-escolas';
+
     let headerRow = document.createElement('tr');
     let headers = [ "id", "nome", "municipio", "tipo educacao"];
 
@@ -53,8 +65,13 @@ async function createTableEscolas(records){
 }
     
 async function createTableRailRoad(records){
-    let div = document.querySelector('#section2')
+    let div = document.querySelector('#section2');
+
+    removeTableIfExists('table-ferrovias');
+
     let table = document.createElement('table');
+    table.id = 'table-ferrovias';
+
     let headerRow = document.createElement('tr');
     let headers = [ "id", "nome", "concessão", "situação"];
 
@@ -97,8 +114,13 @@ async function createTableRailRoad(records){
 }
 
 async function createTableCisp(records){
-    let div = document.querySelector('#section3')
+    let div = document.querySelector('#section3');
+
+    removeTableIfExists('table-cisp');
+    
     let table = document.createElement('table');
+    table.id = 'table-cisp';
+
     let headerRow = document.createElement('tr');
     let headers = [ "id", "municipio", "imovel", "inauguração", "endereço"];
 
@@ -146,7 +168,12 @@ async function createTableCisp(records){
 
 async function createTableSamu(records){
     let div = document.querySelector('#section4')
+
+    removeTableIfExists('table-samu');
+
     let table = document.createElement('table');
+    table.id = 'table-samu';
+
     let headerRow = document.createElement('tr');
     let headers = [ "id", "nome", "municipio", "endereço", "bairro"];
 

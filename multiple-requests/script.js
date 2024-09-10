@@ -33,6 +33,8 @@ async function createTableEscolas(records){
         headerRow.appendChild(header);
     });
 
+    table.appendChild(headerRow);
+
     records.forEach(record => {
         let row = document.createElement('tr');
         let column_1 = document.createElement('td');
@@ -55,8 +57,6 @@ async function createTableEscolas(records){
     });
 
     document.body.appendChild(table);
-
-    table.appendChild(headerRow);
 
     div.appendChild(table)
 
@@ -82,6 +82,8 @@ async function createTableRailRoad(records){
         headerRow.appendChild(header);
     });
 
+    table.appendChild(headerRow);
+
     records.forEach(record => {
         let row = document.createElement('tr');
         let column_1 = document.createElement('td');
@@ -104,8 +106,6 @@ async function createTableRailRoad(records){
     });
 
     document.body.appendChild(table);
-
-    table.appendChild(headerRow);
 
     div.appendChild(table)
 
@@ -130,6 +130,8 @@ async function createTableCisp(records){
         header.textContent = headerText;
         headerRow.appendChild(header);
     });
+
+    table.appendChild(headerRow);
 
     records.forEach(record => {
         let row = document.createElement('tr');
@@ -158,8 +160,6 @@ async function createTableCisp(records){
 
     document.body.appendChild(table);
 
-    table.appendChild(headerRow);
-
     div.appendChild(table)
 
     let p_div = document.getElementById('p-section-3')
@@ -183,6 +183,8 @@ async function createTableSamu(records){
         header.textContent = headerText;
         headerRow.appendChild(header);
     });
+
+    table.appendChild(headerRow);
 
     records.forEach(record => {
         let row = document.createElement('tr');
@@ -210,8 +212,6 @@ async function createTableSamu(records){
     });
 
     document.body.appendChild(table);
-
-    table.appendChild(headerRow);
 
     div.appendChild(table)
 
